@@ -1,0 +1,85 @@
+package Project1;
+
+		import org.openqa.selenium.By;
+		import org.openqa.selenium.WebDriver;
+		import org.openqa.selenium.WebElement;
+		import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class PROJECT1 {
+
+			public static void main(String[] args)throws InterruptedException  {
+				
+				String url =" https://parabank.parasoft.com/parabank/index.htm";
+				WebDriver driver=new ChromeDriver();
+				driver.manage().window().maximize();
+				driver.get(url);
+				
+				//Register;
+				
+				WebElement Register= driver.findElement(By.linkText("Register"));
+				Register.click();
+				
+				// Form Details;
+				
+				WebElement FirstName= driver.findElement(By.id("customer.firstName"));
+				FirstName.sendKeys("Chiranjeevi");
+				
+        WebElement LastName= driver.findElement(By.id("customer.lastName"));
+				LastName.sendKeys("A");
+				
+        WebElement ADD= driver.findElement(By.id("customer.address.street"));
+				ADD.sendKeys("NO;5 Seetharam");
+				
+        WebElement City= driver.findElement(By.id("customer.address.city"));
+				City.sendKeys("Chennai");
+				
+        WebElement State= driver.findElement(By.id("customer.address.state"));
+				State.sendKeys("TamilNadu");
+				
+        WebElement Zip= driver.findElement(By.id("customer.address.zipCode"));
+				Zip.sendKeys("600");
+				
+        WebElement Ph= driver.findElement(By.id("customer.phoneNumber"));
+				Ph.sendKeys("8122353433");
+				
+        WebElement Snn= driver.findElement(By.id("customer.ssn"));
+				Snn.sendKeys("1234");
+				
+        WebElement UserName= driver.findElement(By.id("customer.username"));
+				UserName.sendKeys("sriram123");
+				
+        WebElement PassWord= driver.findElement(By.id("customer.password"));
+				PassWord.sendKeys("Admin@123");
+				
+        WebElement ConfirmPass= driver.findElement(By.id("repeatedPassword"));
+				ConfirmPass.sendKeys("Admin@123");
+				
+				//Click_Register;
+				
+				WebElement Reg= driver.findElement(By.cssSelector(".button"));
+				Reg.click();
+				
+				//Login;
+				
+				WebElement User_name=driver.findElement(By.cssSelector(".input"));
+				User_name.sendKeys("sriram123");
+				WebElement Pass=driver.findElement(By.name("password"));
+				Pass.sendKeys("Admin@123");
+				WebElement Login=driver.findElement(By.cssSelector("input[type='submit']"));
+				Login.click();
+				
+				// Validation
+		        String title = driver.findElement(By.className("title")).getText();
+
+		        System.out.println("Page Title: " + title);
+
+		        if (title.contains("Accounts Overview")) {
+		            System.out.println("PASS : Login Successful");
+		        } 
+		        else {
+		            System.out.println("FAIL : Login Failed"); 
+		            }
+		        driver.quit();
+		        }
+			}	
