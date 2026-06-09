@@ -1,0 +1,43 @@
+1) TO CREATE_ACCOUNT IN WEBSITE;
+
+package PROJECT2;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class PROJECT2_Account_Login {
+
+    public static void main(String[] args) throws InterruptedException {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://automationexercise.com/");
+        driver.findElement(By.linkText("Signup / Login")).click();
+       
+        WebElement Name =  driver.findElement(By.name("name"));
+		Name.sendKeys("Chiru");
+		
+		WebElement EmailID = driver.findElement(By.cssSelector("input[data-qa='signup-email']"));
+		EmailID.sendKeys("chiruraju2323@gmail.com");
+		
+		WebElement signup = driver.findElement(By.cssSelector("button[data-qa='signup-button']"));
+		signup.click();
+	
+		WebElement EmailID1 = driver.findElement(By.name("email"));
+		EmailID1.sendKeys("chiruraju2323@gmail.com");
+
+		WebElement Password = driver.findElement(By.name("password"));
+		Password .sendKeys("Chiru@23");
+		        
+		WebElement Login = driver.findElement(By.cssSelector("Button[data-qa='login-button']"));
+		Login.click();
+
+		System.out.println("Test Login Completed");
+
+		Thread.sleep(7000);
+		driver.quit();
+        
+    }
+ }
