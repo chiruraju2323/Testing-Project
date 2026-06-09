@@ -1,0 +1,52 @@
+package PROJECT2;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class PROJECT2 {
+
+    public static void main(String[] args) throws Exception {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.manage().window().maximize();
+        driver.get("https://automationexercise.com/");
+
+        // Login
+        driver.findElement(By.linkText("Signup / Login")).click();
+
+        driver.findElement(By.cssSelector("input[data-qa='login-email']"))
+                .sendKeys("chiruraju2323@gmail.com");
+
+        driver.findElement(By.name("password"))
+                .sendKeys("Chiru@23");
+
+        driver.findElement(By.cssSelector("button[data-qa='login-button']"))
+                .click();
+
+        Thread.sleep(3000);
+
+        // Products
+        driver.findElement(By.cssSelector("a[href='/products']")).click();
+
+        Thread.sleep(3000);
+
+        // Remove advertisement iframe
+        
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript(
+                "document.querySelectorAll('iframe').forEach(function(e){e.remove();});");
+
+        // Search
+        driver.findElement(By.id("search_product")).sendKeys("JEANS");
+        driver.findElement(By.id("submit_search")).click();
+
+        System.out.println("Test Completed Successfully");
+        
+        Thread.sleep(5000);
+        
+        driver.quit();
+    }
+}
